@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+
+
+{% block title %}SignUp{% endblock title %}
+
+{% block body %}
+
+<div class="signup-form">
+    <h3>Add Employee</h3>
+    {% for error in form.erros %}
+        <span style='color:red;'>{{error}}</span>
+    {% endfor %}
+    <form method='post' novalidate>
+        {% csrf_token %}
+        <div class="container-signup">
+        <div class=row>
+            <div class="field">
+                <label for='id_username' class='form_label'>Username</label>
+                {{form.username}}
+                {{form.username.errors}}
+            </div>
+            
+            <div class="field">
+                <label for='id_firstName' class='form_label'>First Name</label>
+                {{emp_form.firstName}}
+                {{emp_form.firstName.errors}}
+            </div>
+            <div class="field">
+                <label for='id_middleName' class='form_label'>Middle Name</label>
+                {{emp_form.middleName}}
+                {{emp_form.middleName.errors}}
+            </div>
+            <div class="field">
+                <label for='id_lastName' class='form_label'>Last Name</label>
+                {{emp_form.lastName}}
+                {{emp_form.lastName.errors}}
+            </div>
+            <div class="field">
+                <label for='id_deptId' class='form_label'>Department</label>
+                {{emp_form.deptId}}
+                {{emp_form.deptId.errors}}
+            </div>
+            <div class="field">
+                <label for='id_positionId' class='form_label'>Position</label>
+                {{emp_form.positionId}}
+                {{emp_form.positionId.errors}}
+            </div>
+            <div class="field">
+                <label for='id_birthDate' class='form_label'>Date of Birth</label>
+                {{emp_form.birthDate}}
+                {{emp_form.birthDate.errors}}
+            </div>
+            <div class="field">
+                <label for='id_age' class='form_label'>Age</label>
+                {{emp_form.age}}
+                {{emp_form.age.errors}}
+            </div>
+            <div class="field">
+                <label for='id_sex' class='form_label'>Gender</label>
+                {{emp_form.sex}}
+                {{emp_form.sex.errors}}
+            </div>
+        </div>
+        <div class=row>
+            
+            <div class="field">
+                <label for='id_address' class='form_label'>Address</label>
+                {{emp_form.address}}
+                {{emp_form.address.errors}}
+            </div>
+            <div class="field">
+                <label for='id_employedDate' class='form_label'>Started Date</label>
+                {{emp_form.employedDate}}
+                {{emp_form.employedDate.errors}}
+            </div>
+            <div class="field">
+                <label for='id_supervisorId' class='form_label'>Supervisor</label>
+                {{emp_form.supervisorId}}
+                {{emp_form.supervisorId.errors}}
+            </div>
+            <div class="field">
+                <label for="id_img" class="drop-container" id="dropcontainer">
+                    <span class="drop-title">Drop files here</span>
+                    or
+                    {{emp_form.img}}
+                </label> 
+                {{emp_form.img.errors}}
+            </div>
+            <div class="field">
+                <label for='id_password1' class='form_label'>Password</label>
+                {{form.password1}}
+                {{form.password1.errors}}
+            </div>
+            <div class="field">
+                <label for='id_password2' class='form_label'>Confirm Password</label>
+                {{form.password2}}
+                {{form.password2.errors}}
+            </div>
+        </div>
+        </div>
+
+        
+        <div class="field button-field">
+            <input type="submit" value="Create">
+            <input type="reset" value="Reset">
+        </div>
+    </form>
+</div>
+{% endblock body %}
+
+
+{% block script %}
+
+
+
+
+    const dropContainer = document.getElementById("dropcontainer")
+    const fileInput = document.getElementById("images")
+
+    dropContainer.addEventListener("dragover", (e) => {
+    e.preventDefault()
+    }, false)
+
+    dropContainer.addEventListener("dragenter", () => {
+    dropContainer.classList.add("drag-active")
+    })
+
+    dropContainer.addEventListener("dragleave", () => {
+    dropContainer.classList.remove("drag-active")
+    })
+
+    dropContainer.addEventListener("drop", (e) => {
+    e.preventDefault()
+    dropContainer.classList.remove("drag-active")
+    fileInput.files = e.dataTransfer.files
+    })
+{% endblock script %}

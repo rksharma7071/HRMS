@@ -1,0 +1,23 @@
+{% extends "dashboard.html" %}
+{% block title1 %}Leave{% endblock title1 %}
+
+
+{% block dashboard %}
+
+    <h1>Employee</h1>
+    <p>Hi, {{emp.firstName}} {{emp.middleName}} {{emp.lastName}}</p>
+    <p>Department : {{emp.deptId}}</p>
+    <p>Position : {{emp.positionId}}</p>
+    <p>Date of Birth : {{emp.birthDate}}</p>
+    <p>Age : {{emp.age}}</p>
+    <p>Gender : {{emp.sex}}</p>
+    <p>Address : {{emp.address}}</p>
+    <p>Joining Date : {{emp.employedDate}}</p>
+    <p>Supervisor : 
+        {% if emp.supervisorId is 'admin' %}
+            {{emp.supervisorId}}
+        {% else %}
+            Self
+        {% endif %}</p>
+    
+{% endblock dashboard %}

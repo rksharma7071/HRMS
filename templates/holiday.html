@@ -1,0 +1,26 @@
+{% extends "dashboard.html" %}
+{% block title1 %}Holiday{% endblock title1 %}
+
+
+{% block dashboard %}
+    <h2>Holidays</h2>
+    {% if holidays %}
+        <table style='width:80%; margin:auto;' border='1'>
+            <tr>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Description</th>
+            </tr>
+            {% for holiday in holidays %}
+            <tr>
+                <td>{{holiday.title}}</td>
+                <td>{{holiday.startDate}}</td>
+                <td>{{holiday.endDate}}</td>
+                <td>{{holiday.description}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    
+{% endblock dashboard %}

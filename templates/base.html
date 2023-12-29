@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Title{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% block body %}
+        <h1>Base Page</h1>
+    {% endblock body %}
+
+    <script>
+        {% if message %}
+            alert({{message}})
+        {% endif %}
+        {% block script %}{% endblock script %}
+    </script>
+</body>
+</html>
